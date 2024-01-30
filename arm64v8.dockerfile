@@ -1,3 +1,6 @@
+# :: Arch
+  FROM multiarch/qemu-user-static:x86_64-aarch64 as qemu
+
 # :: Util
   FROM alpine as util
 
@@ -34,7 +37,8 @@
     upx -q adguardhome-sync;
 
 # :: Header
-  FROM 11notes/alpine:stable
+  FROM 11notes/alpine:arm64v8-stable
+  COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin
   COPY --from=util /util/linux/shell/log-json /usr/local/bin
   COPY --from=build /go/adguardhome-sync/adguardhome-sync /usr/local/bin
   ENV APP_ROOT=/adguard-sync
