@@ -35,7 +35,7 @@
 
 # :: Header
   FROM 11notes/alpine:stable
-  COPY --from=util /util/linux/shell/log-json /usr/local/bin
+  COPY --from=util /util/linux/shell/elevenLogJSON /usr/local/bin
   COPY --from=build /go/adguardhome-sync/adguardhome-sync /usr/local/bin
   ENV APP_ROOT=/adguard-sync
 

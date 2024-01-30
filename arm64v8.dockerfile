@@ -39,7 +39,7 @@
 # :: Header
   FROM 11notes/alpine:arm64v8-stable
   COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin
-  COPY --from=util /util/linux/shell/log-json /usr/local/bin
+  COPY --from=util /util/linux/shell/elevenLogJSON /usr/local/bin
   COPY --from=build /go/adguardhome-sync/adguardhome-sync /usr/local/bin
   ENV APP_ROOT=/adguard-sync
 
