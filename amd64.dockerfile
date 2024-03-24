@@ -8,7 +8,7 @@
 
 # :: Build
   FROM golang:1.21.6-alpine3.19 as build
-  ENV APP_VERSION=v0.6.3
+  ENV APP_VERSION=v0.6.7
   ENV BUILD="11notes"
   ENV APP_ROOT=/go/adguardhome-sync
 

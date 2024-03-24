@@ -1,5 +1,5 @@
 # Alpine :: AdGuard-Sync
-![size](https://img.shields.io/docker/image-size/11notes/adguard-sync/0.6.2?color=0eb305) ![version](https://img.shields.io/docker/v/11notes/adguard-sync?color=eb7a09) ![pulls](https://img.shields.io/docker/pulls/11notes/adguard-sync?color=2b75d6) ![activity](https://img.shields.io/github/commit-activity/m/11notes/docker-adguard-sync?color=c91cb8) ![commit-last](https://img.shields.io/github/last-commit/11notes/docker-adguard-sync?color=c91cb8)
+![size](https://img.shields.io/docker/image-size/11notes/adguard-sync/0.6.3?color=0eb305) ![version](https://img.shields.io/docker/v/11notes/adguard-sync?color=eb7a09) ![pulls](https://img.shields.io/docker/pulls/11notes/adguard-sync?color=2b75d6) ![activity](https://img.shields.io/github/commit-activity/m/11notes/docker-adguard-sync?color=c91cb8) ![commit-last](https://img.shields.io/github/last-commit/11notes/docker-adguard-sync?color=c91cb8)
 
 Run AdGuard-Sync based on Alpine Linux. Small, lightweight, secure and fast 🏔️
 
@@ -29,7 +29,8 @@ docker run --name adguard-sync \
 ## Environment
 | Parameter | Value | Default |
 | --- | --- | --- |
-| `TZ` | [Time Zone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) | null |
+| `TZ` | [Time Zone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) | |
+| `DEBUG` | Show debug information | |
 
 ## Parent image
 * [11notes/alpine:stable](https://hub.docker.com/r/11notes/alpine)
