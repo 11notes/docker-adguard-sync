@@ -1,7 +1,7 @@
 {
   "image":"11notes/adguard-sync",
-  "name":"adguard",
-  "root":"/adguard",
+  "name":"adguard-sync",
+  "root":"/adguard-sync",
   
   "semver":{
     "version":"0.7.2",
@@ -10,7 +10,7 @@
   },
 
   "readme":{
-    "description":"Sync multiple adguard instances on a schedule",
+    "description":"Sync multiple adguard instances on a schedule for high-availability",
     "built":{
       "adguardhome-sync":"https://github.com/bakito/adguardhome-sync"
     },
