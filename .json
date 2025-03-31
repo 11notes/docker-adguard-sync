@@ -1,0 +1,24 @@
+{
+  "image":"11notes/adguard-sync",
+  "name":"adguard",
+  "root":"/adguard",
+  
+  "semver":{
+    "version":"0.7.2",
+    "stable":"0.7.2",
+    "latest":"0.7.2"
+  },
+
+  "readme":{
+    "description":"Sync multiple adguard instances on a schedule",
+    "built":{
+      "adguardhome-sync":"https://github.com/bakito/adguardhome-sync"
+    },
+    "distroless":{
+      "layers":[
+        "11notes/distroless",
+        "11notes/distroless:curl"
+      ]
+    }
+  }
+}

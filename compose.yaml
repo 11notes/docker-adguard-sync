@@ -1,0 +1,55 @@
+# This is a demo compose to showcase how the sync works. The two adguard s
+# hould not be run on the same server, but different ones. Make sure to crea
+# te a MACLVAN or other network so all images can communicate over multiple
+# servers.
+name: "adguard-sync"
+services:
+  adguard-sync:
+    depends_on:
+      adguard-master:
+        condition: "service_healthy"
+        restart: true
+      adguard-slave:
+        condition: "service_healthy"
+        restart: true
+    image: "11notes/adguard-sync:0.7.2"
+    read_only: true
+    environment:
+      TZ: "Europe/Zurich"
+    volumes:
+      - "etc:/adguard/etc"
+    ports:
+      - "8443:8443/tcp"
+    networks:
+      frontend:
+    restart: "always"
+
+  adguard-master:
+    image: "11notes/adguard:0.107.59"
+    environment:
+      TZ: "Europe/Zurich"
+    ports:
+      - "1053:53/udp"
+      - "1053:53/tcp"
+      - "18443:8443/tcp"
+    networks:
+      frontend:
+    restart: "always"
+
+  adguard-slave:
+    image: "11notes/adguard:0.107.59"
+    environment:
+      TZ: "Europe/Zurich"
+    ports:
+      - "2053:53/udp"
+      - "2053:53/tcp"
+      - "28443:8443/tcp"
+    networks:
+      frontend:
+    restart: "always"
+
+volumes:
+  etc:
+
+networks:
+  frontend:
