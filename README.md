@@ -12,10 +12,12 @@ These are the main tags for the image. There is also a tag for each commit and i
 * [stable](https://hub.docker.com/r/11notes/adguard-sync/tags?name=stable)
 * [latest](https://hub.docker.com/r/11notes/adguard-sync/tags?name=latest)
 
-undefined
-```docker pull 11notes/adguard-sync:0.7.2
+# REPOSITORIES ☁️
+```
+docker pull 11notes/adguard-sync:0.7.2
 docker pull ghcr.io/11notes/adguard-sync:0.7.2
-docker pull quay.io/11notes/adguard-sync:0.7.2```
+docker pull quay.io/11notes/adguard-sync:0.7.2
+```
 
 ![API](https://github.com/11notes/docker-adguard-sync/blob/master/img/API.png?raw=true)
 
@@ -182,4 +184,4 @@ networks:
 # ElevenNotes™️
 This image is provided to you at your own risk. Always make backups before updating an image to a different version. Check the [releases](https://github.com/11notes/docker-adguard-sync/releases) for breaking changes. If you have any problems with using this image simply raise an [issue](https://github.com/11notes/docker-adguard-sync/issues), thanks. If you have a question or inputs please create a new [discussion](https://github.com/11notes/docker-adguard-sync/discussions) instead of an issue. You can find all my other repositories on [github](https://github.com/11notes?tab=repositories).
 
-*created 31.03.2025, 22:03:50 (CET)*
+*created 31.03.2025, 22:11:06 (CET)*
