@@ -1,7 +1,3 @@
-# This is a demo compose to showcase how the sync works. The two adguard s
-# hould not be run on the same server, but different ones. Make sure to crea
-# te a MACLVAN or other network so all images can communicate over multiple
-# servers.
 name: "adguard-sync"
 services:
   adguard-sync:
@@ -19,7 +15,7 @@ services:
     volumes:
       - "etc:/adguard/etc"
     ports:
-      - "8443:8443/tcp"
+      - "3000:3000/tcp"
     networks:
       frontend:
     restart: "always"

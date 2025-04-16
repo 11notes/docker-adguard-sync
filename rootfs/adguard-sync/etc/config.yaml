@@ -15,14 +15,14 @@ replicas:
     password: adguard
 
 api:
-  port: 8443
+  port: 3000
   username: admin
   password: adguard
   darkMode: true
-  tls:
-    certDir: /adguard-sync/etc/ssl
-    certName: default.crt
-    keyName: default.key
+  metrics:
+    enabled: true
+    scrapeInterval: 10s
+    queryLogLimit: 10000
 
 features:
   generalSettings: true

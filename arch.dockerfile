@@ -1,3 +1,6 @@
+ARG APP_UID=1000
+ARG APP_GID=1000
+
 # :: Util
   FROM 11notes/util AS util
 
@@ -8,8 +11,8 @@
   ARG APP_ROOT
   ARG APP_VERSION
   ENV CGO_ENABLED=0
-  ENV BUILD_DIR=/go/adguardhome-sync
-  ENV BUILD_BIN=${BUILD_DIR}/adguardhome-sync
+  ENV BUILD_ROOT=/go/adguardhome-sync
+  ENV BUILD_BIN=${BUILD_ROOT}/adguardhome-sync
 
   USER root
 
@@ -33,20 +36,13 @@
     git clone https://github.com/bakito/adguardhome-sync.git -b v${APP_VERSION};
 
   RUN set -ex; \
-    cd ${BUILD_DIR}; \
+    cd ${BUILD_ROOT}; \
     go build -ldflags="-extldflags=-static -X github.com/bakito/adguardhome-sync/version.Version=${APP_VERSION} -X github.com/bakito/adguardhome-sync/version.Build=${APP_IMAGE}";
 
   RUN set -ex; \
     mkdir -p /distroless/usr/local/bin; \
     eleven strip ${BUILD_BIN}; \
     cp ${BUILD_BIN} /distroless/usr/local/bin;
-
-  RUN set -ex; \
-    mkdir -p /distroless/${APP_ROOT}/etc/ssl; \
-    openssl req -x509 -newkey rsa:4096 -subj "/C=XX/ST=XX/L=XX/O=XX/OU=docker/CN=adguard-sync" \
-      -keyout "/distroless/${APP_ROOT}/etc/ssl/default.key" \
-      -out "/distroless/${APP_ROOT}/etc/ssl/default.crt" \
-      -days 3650 -nodes -sha256 &> /dev/null;
 
 # :: Distroless / adguard-sync
   FROM scratch AS distroless-adguard-sync
@@ -93,18 +89,18 @@
     ENV LOG_FORMAT=json
 
   # :: multi-stage
-    COPY --from=distroless --chown=1000:1000 / /
-    COPY --from=distroless-fs --chown=1000:1000 / /
-    COPY --from=distroless-curl --chown=1000:1000 / /
-    COPY --from=distroless-adguard-sync --chown=1000:1000 / /
+    COPY --from=distroless --chown=${APP_UID}:${APP_GID} / /
+    COPY --from=distroless-fs --chown=${APP_UID}:${APP_GID} / /
+    COPY --from=distroless-curl --chown=${APP_UID}:${APP_GID} / /
+    COPY --from=distroless-adguard-sync --chown=${APP_UID}:${APP_GID} / /
 
 # :: Volumes
   VOLUME ["${APP_ROOT}/etc"]
 
 # :: Monitor
-  HEALTHCHECK --interval=5s --timeout=2s CMD if [ $(curl http://localhost:8080 -s --write-out "%{http_code}") = "401" ]; then exit 0; else exit 1; fi
+  HEALTHCHECK --interval=5s --timeout=2s CMD if [ $(curl http://localhost:3000 -s --write-out "%{http_code}") = "401" ]; then exit 0; else exit 1; fi
 
 # :: Start
-  USER docker
-  ENTRYPOINT ["adguardhome-sync"]
+  USER ${APP_UID}:${APP_GID}
+  ENTRYPOINT ["/usr/local/bin/adguardhome-sync"]
   CMD ["run", "--config", "/adguard-sync/etc/config.yaml"]
