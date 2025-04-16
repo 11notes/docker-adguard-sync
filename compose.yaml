@@ -27,7 +27,7 @@ services:
     ports:
       - "1053:53/udp"
       - "1053:53/tcp"
-      - "18443:8443/tcp"
+      - "3001:3000/tcp"
     networks:
       frontend:
     restart: "always"
@@ -39,7 +39,7 @@ services:
     ports:
       - "2053:53/udp"
       - "2053:53/tcp"
-      - "28443:8443/tcp"
+      - "3002:3000/tcp"
     networks:
       frontend:
     restart: "always"

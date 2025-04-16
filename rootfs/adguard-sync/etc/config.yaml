@@ -3,14 +3,12 @@ runOnStart: true
 continueOnError: false
 
 origin:
-  url: https://adguard-master:8443
-  insecureSkipVerify: true
+  url: http://adguard-master:3000
   username: admin
   password: adguard
 
 replicas:
-  - url: https://adguard-slave:8443
-    insecureSkipVerify: true
+  - url: http://adguard-slave:3000
     username: admin
     password: adguard
 
