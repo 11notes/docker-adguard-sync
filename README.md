@@ -44,26 +44,24 @@ runOnStart: true
 continueOnError: false
 
 origin:
-  url: https://adguard-master:8443
-  insecureSkipVerify: true
+  url: http://adguard-master:3000
   username: admin
   password: adguard
 
 replicas:
-  - url: https://adguard-slave:8443
-    insecureSkipVerify: true
+  - url: http://adguard-slave:3000
     username: admin
     password: adguard
 
 api:
-  port: 8443
+  port: 3000
   username: admin
   password: adguard
   darkMode: true
-  tls:
-    certDir: /adguard-sync/etc/ssl
-    certName: default.crt
-    keyName: default.key
+  metrics:
+    enabled: true
+    scrapeInterval: 10s
+    queryLogLimit: 10000
 
 features:
   generalSettings: true
@@ -86,10 +84,6 @@ features:
 
 # COMPOSE ✂️
 ```yaml
-# This is a demo compose to showcase how the sync works. The two adguard s
-# hould not be run on the same server, but different ones. Make sure to crea
-# te a MACLVAN or other network so all images can communicate over multiple
-# servers.
 name: "adguard-sync"
 services:
   adguard-sync:
@@ -107,7 +101,7 @@ services:
     volumes:
       - "etc:/adguard/etc"
     ports:
-      - "8443:8443/tcp"
+      - "3000:3000/tcp"
     networks:
       frontend:
     restart: "always"
@@ -119,7 +113,7 @@ services:
     ports:
       - "1053:53/udp"
       - "1053:53/tcp"
-      - "18443:8443/tcp"
+      - "3001:3000/tcp"
     networks:
       frontend:
     restart: "always"
@@ -131,7 +125,7 @@ services:
     ports:
       - "2053:53/udp"
       - "2053:53/tcp"
-      - "28443:8443/tcp"
+      - "3002:3000/tcp"
     networks:
       frontend:
     restart: "always"
@@ -178,10 +172,9 @@ networks:
 
 # CAUTION ⚠️
 > [!CAUTION]
->* This image comes with a default SSL certificate. If you plan to expose the web interface via HTTPS, please replace the default certificate with your own or use a reverse proxy
 >* This image comes with a default configuration with a default password for the admin account. Please set your own password or provide your own configuration.
 
 # ElevenNotes™️
 This image is provided to you at your own risk. Always make backups before updating an image to a different version. Check the [releases](https://github.com/11notes/docker-adguard-sync/releases) for breaking changes. If you have any problems with using this image simply raise an [issue](https://github.com/11notes/docker-adguard-sync/issues), thanks. If you have a question or inputs please create a new [discussion](https://github.com/11notes/docker-adguard-sync/discussions) instead of an issue. You can find all my other repositories on [github](https://github.com/11notes?tab=repositories).
 
-*created 31.03.2025, 22:11:06 (CET)*
+*created 16.04.2025, 10:32:31 (CET)*
