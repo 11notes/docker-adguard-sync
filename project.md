@@ -14,6 +14,8 @@ ${{ github:> }}* This image works as read-only, most other images need to write 
 
 If you value security, simplicity and the ability to interact with the maintainer and developer of an image. Using my images is a great start in that direction.
 
+${{ content_comparison }}
+
 ${{ title_config }}
 ```yaml
 ${{ include: ./rootfs/adguard-sync/etc/config.yaml }}
