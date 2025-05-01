@@ -1,22 +1,22 @@
 ![banner](https://github.com/11notes/defaults/blob/main/static/img/banner.png?raw=true)
 
 # ADGUARD-SYNC
-[<img src="https://img.shields.io/badge/github-source-blue?logo=github&color=040308">](https://github.com/11notes/docker-ADGUARD-SYNC)![5px](https://github.com/11notes/defaults/blob/main/static/img/transparent5x2px.png?raw=true)![size](https://img.shields.io/docker/image-size/11notes/adguard-sync/0.7.2?color=0eb305)![5px](https://github.com/11notes/defaults/blob/main/static/img/transparent5x2px.png?raw=true)![version](https://img.shields.io/docker/v/11notes/adguard-sync/0.7.2?color=eb7a09)![5px](https://github.com/11notes/defaults/blob/main/static/img/transparent5x2px.png?raw=true)![pulls](https://img.shields.io/docker/pulls/11notes/adguard-sync?color=2b75d6)![5px](https://github.com/11notes/defaults/blob/main/static/img/transparent5x2px.png?raw=true)[<img src="https://img.shields.io/github/issues/11notes/docker-ADGUARD-SYNC?color=7842f5">](https://github.com/11notes/docker-ADGUARD-SYNC/issues)![5px](https://github.com/11notes/defaults/blob/main/static/img/transparent5x2px.png?raw=true)![swiss_made](https://img.shields.io/badge/Swiss_Made-FFFFFF?labelColor=FF0000&logo=data:image/svg%2bxml;base64,PHN2ZyB2ZXJzaW9uPSIxIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDMyIDMyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im0wIDBoMzJ2MzJoLTMyeiIgZmlsbD0iI2YwMCIvPjxwYXRoIGQ9Im0xMyA2aDZ2N2g3djZoLTd2N2gtNnYtN2gtN3YtNmg3eiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==)
+[<img src="https://img.shields.io/badge/github-source-blue?logo=github&color=040308">](https://github.com/11notes/docker-ADGUARD-SYNC)![5px](https://github.com/11notes/defaults/blob/main/static/img/transparent5x2px.png?raw=true)![size](https://img.shields.io/docker/image-size/11notes/adguard-sync/0.7.5?color=0eb305)![5px](https://github.com/11notes/defaults/blob/main/static/img/transparent5x2px.png?raw=true)![version](https://img.shields.io/docker/v/11notes/adguard-sync/0.7.5?color=eb7a09)![5px](https://github.com/11notes/defaults/blob/main/static/img/transparent5x2px.png?raw=true)![pulls](https://img.shields.io/docker/pulls/11notes/adguard-sync?color=2b75d6)![5px](https://github.com/11notes/defaults/blob/main/static/img/transparent5x2px.png?raw=true)[<img src="https://img.shields.io/github/issues/11notes/docker-ADGUARD-SYNC?color=7842f5">](https://github.com/11notes/docker-ADGUARD-SYNC/issues)![5px](https://github.com/11notes/defaults/blob/main/static/img/transparent5x2px.png?raw=true)![swiss_made](https://img.shields.io/badge/Swiss_Made-FFFFFF?labelColor=FF0000&logo=data:image/svg%2bxml;base64,PHN2ZyB2ZXJzaW9uPSIxIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDMyIDMyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im0wIDBoMzJ2MzJoLTMyeiIgZmlsbD0iI2YwMCIvPjxwYXRoIGQ9Im0xMyA2aDZ2N2g3djZoLTd2N2gtNnYtN2gtN3YtNmg3eiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==)
 
 Sync multiple adguard instances on a schedule for high-availability
 
 # MAIN TAGS 🏷️
 These are the main tags for the image. There is also a tag for each commit and its shorthand sha256 value.
 
-* [0.7.2](https://hub.docker.com/r/11notes/adguard-sync/tags?name=0.7.2)
+* [0.7.5](https://hub.docker.com/r/11notes/adguard-sync/tags?name=0.7.5)
 * [stable](https://hub.docker.com/r/11notes/adguard-sync/tags?name=stable)
 * [latest](https://hub.docker.com/r/11notes/adguard-sync/tags?name=latest)
 
 # REPOSITORIES ☁️
 ```
-docker pull 11notes/adguard-sync:0.7.2
-docker pull ghcr.io/11notes/adguard-sync:0.7.2
-docker pull quay.io/11notes/adguard-sync:0.7.2
+docker pull 11notes/adguard-sync:0.7.5
+docker pull ghcr.io/11notes/adguard-sync:0.7.5
+docker pull quay.io/11notes/adguard-sync:0.7.5
 ```
 
 ![API](https://github.com/11notes/docker-adguard-sync/blob/master/img/API.png?raw=true)
@@ -36,6 +36,16 @@ docker pull quay.io/11notes/adguard-sync:0.7.2
 >* This image works as read-only, most other images need to write files to the image filesystem
 
 If you value security, simplicity and the ability to interact with the maintainer and developer of an image. Using my images is a great start in that direction.
+
+# COMPARISON 🏁
+Below you find a comparison between this image and the most used one.
+
+| image | 11notes/adguard-sync:0.7.5 | lscr.io/linuxserver/adguardhome-sync:v0.7.5-ls136 |
+| ---: | :---: | :---: |
+| image size on disk | 9.85MB | 44.2MB |
+| process UID/GID | 1000/1000 | 0:0 |
+| distroless? | ✅ | ❌ |
+
 
 # DEFAULT CONFIG 📑
 ```yaml
@@ -94,7 +104,7 @@ services:
       adguard-slave:
         condition: "service_healthy"
         restart: true
-    image: "11notes/adguard-sync:0.7.2"
+    image: "11notes/adguard-sync:0.7.5"
     read_only: true
     environment:
       TZ: "Europe/Zurich"
@@ -177,4 +187,4 @@ networks:
 # ElevenNotes™️
 This image is provided to you at your own risk. Always make backups before updating an image to a different version. Check the [releases](https://github.com/11notes/docker-adguard-sync/releases) for breaking changes. If you have any problems with using this image simply raise an [issue](https://github.com/11notes/docker-adguard-sync/issues), thanks. If you have a question or inputs please create a new [discussion](https://github.com/11notes/docker-adguard-sync/discussions) instead of an issue. You can find all my other repositories on [github](https://github.com/11notes?tab=repositories).
 
-*created 16.04.2025, 10:32:31 (CET)*
+*created 28.04.2025, 01:13:29 (CET)*
