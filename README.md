@@ -5,20 +5,6 @@
 
 Sync multiple adguard instances on a schedule for high-availability
 
-# MAIN TAGS 🏷️
-These are the main tags for the image. There is also a tag for each commit and its shorthand sha256 value.
-
-* [0.7.5](https://hub.docker.com/r/11notes/adguard-sync/tags?name=0.7.5)
-* [stable](https://hub.docker.com/r/11notes/adguard-sync/tags?name=stable)
-* [latest](https://hub.docker.com/r/11notes/adguard-sync/tags?name=latest)
-
-# REPOSITORIES ☁️
-```
-docker pull 11notes/adguard-sync:0.7.5
-docker pull ghcr.io/11notes/adguard-sync:0.7.5
-docker pull quay.io/11notes/adguard-sync:0.7.5
-```
-
 ![API](https://github.com/11notes/docker-adguard-sync/blob/master/img/API.png?raw=true)
 
 # SYNOPSIS 📖
@@ -33,18 +19,21 @@ docker pull quay.io/11notes/adguard-sync:0.7.5
 >* This image does not ship with any critical or high rated CVE and is automatically maintained via CI/CD, most other images mostly have no CVE scanning or code quality tools in place
 >* This image is created via a secure, pinned CI/CD process and immune to upstream attacks, most other images have upstream dependencies that can be exploited
 >* This image contains a proper health check that verifies the app is actually working, most other images have either no health check or only check if a port is open or ping works
+>* This repository has an auto update feature that will automatically build the latest version if released, most other providers don't do this
 >* This image works as read-only, most other images need to write files to the image filesystem
+>* This image is a lot smaller than most other images
 
 If you value security, simplicity and the ability to interact with the maintainer and developer of an image. Using my images is a great start in that direction.
 
 # COMPARISON 🏁
-Below you find a comparison between this image and the most used one.
+Below you find a comparison between this image and the most used or original one.
 
-| image | 11notes/adguard-sync:0.7.5 | lscr.io/linuxserver/adguardhome-sync:v0.7.5-ls136 |
+| **image** | 11notes/adguard-sync:0.7.5 | linuxserver/adguardhome-sync:0.7.5 |
 | ---: | :---: | :---: |
-| image size on disk | 9.85MB | 44.2MB |
-| process UID/GID | 1000/1000 | 0:0 |
-| distroless? | ✅ | ❌ |
+| **image size on disk** | 9.85MB | 44.2MB |
+| **process UID/GID** | 1000/1000 | 0/0 |
+| **distroless?** | ✅ | ❌ |
+| **rootless?** | ✅ | ❌ |
 
 
 # DEFAULT CONFIG 📑
@@ -162,6 +151,21 @@ networks:
 | `TZ` | [Time Zone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) | |
 | `DEBUG` | Will activate debug option for container image and app (if available) | |
 
+# MAIN TAGS 🏷️
+These are the main tags for the image. There is also a tag for each commit and its shorthand sha256 value.
+
+* [0.7.5](https://hub.docker.com/r/11notes/adguard-sync/tags?name=0.7.5)
+
+### There is no latest tag, what am I supposed to do about updates?
+It is of my opinion that the ```:latest``` tag is super dangerous. Many times, I’ve introduced **breaking** changes to my images. This would have messed up everything for some people. If you don’t want to change the tag to the latest [semver](https://semver.org/), simply use the short versions of [semver](https://semver.org/). Instead of using ```:0.7.5``` you can use ```:0``` or ```:0.7```. Since on each new version these tags are updated to the latest version of the software, using them is identical to using ```:latest``` but at least fixed to a major or minor version.
+
+# REGISTRIES ☁️
+```
+docker pull 11notes/adguard-sync:0.7.5
+docker pull ghcr.io/11notes/adguard-sync:0.7.5
+docker pull quay.io/11notes/adguard-sync:0.7.5
+```
+
 # SOURCE 💾
 * [11notes/adguard-sync](https://github.com/11notes/docker-ADGUARD-SYNC)
 
@@ -187,4 +191,4 @@ networks:
 # ElevenNotes™️
 This image is provided to you at your own risk. Always make backups before updating an image to a different version. Check the [releases](https://github.com/11notes/docker-adguard-sync/releases) for breaking changes. If you have any problems with using this image simply raise an [issue](https://github.com/11notes/docker-adguard-sync/issues), thanks. If you have a question or inputs please create a new [discussion](https://github.com/11notes/docker-adguard-sync/discussions) instead of an issue. You can find all my other repositories on [github](https://github.com/11notes?tab=repositories).
 
-*created 28.04.2025, 01:13:29 (CET)*
+*created 01.05.2025, 08:42:01 (CET)*
