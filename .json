@@ -1,26 +1,24 @@
 {
-  "image":"11notes/adguard-sync",
-  "name":"adguard-sync",
-  "root":"/adguard-sync",
-  "arch":"linux/amd64,linux/arm64,linux/arm/v7",
-  
-  "semver":{
-    "version":"0.7.5"
+  "image": "11notes/adguard-sync",
+  "name": "adguard-sync",
+  "root": "/adguard-sync",
+  "arch": "linux/amd64,linux/arm64,linux/arm/v7",
+  "semver": {
+    "version": "0.7.6"
   },
-
-  "readme":{
-    "description":"Sync multiple adguard instances on a schedule for high-availability",
-    "built":{
-      "adguardhome-sync":"https://github.com/bakito/adguardhome-sync"
+  "readme": {
+    "description": "Sync multiple adguard instances on a schedule for high-availability",
+    "built": {
+      "adguardhome-sync": "https://github.com/bakito/adguardhome-sync"
     },
-    "distroless":{
-      "layers":[
+    "distroless": {
+      "layers": [
         "11notes/distroless",
         "11notes/distroless:curl"
       ]
     },
-    "comparison":{
-      "image":"linuxserver/adguardhome-sync:0.7.5"
+    "comparison": {
+      "image": "linuxserver/adguardhome-sync:0.7.6"
     }
   }
 }
