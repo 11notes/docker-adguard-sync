@@ -18,7 +18,7 @@
       ]
     },
     "comparison": {
-      "image": "linuxserver/adguardhome-sync:0.7.6"
+      "image": "linuxserver/adguardhome-sync:latest"
     }
   }
 }

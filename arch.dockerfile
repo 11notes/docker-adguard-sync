@@ -98,7 +98,8 @@ ARG APP_GID=1000
   VOLUME ["${APP_ROOT}/etc"]
 
 # :: Monitor
-  HEALTHCHECK --interval=5s --timeout=2s CMD if [ $(curl http://localhost:3000 -s --write-out "%{http_code}") = "401" ]; then exit 0; else exit 1; fi
+  HEALTHCHECK --interval=5s --timeout=2s --start-period=5s \
+    CMD if [ $(curl http://localhost:3000 -s --write-out "%{http_code}") = "401" ]; then exit 0; else exit 1; fi
 
 # :: Start
   USER ${APP_UID}:${APP_GID}
