@@ -7,7 +7,8 @@
     "version": "0.7.6"
   },
   "readme": {
-    "description": "Sync multiple adguard instances on a schedule for high-availability",
+    "description": "Run adguard-sync rootless and distroless.",
+    "introduction": "Synchronize AdGuard Home config to replicas",
     "built": {
       "adguardhome-sync": "https://github.com/bakito/adguardhome-sync"
     },
@@ -18,7 +19,7 @@
       ]
     },
     "comparison": {
-      "image": "linuxserver/adguardhome-sync:latest"
+      "image": "linuxserver/adguardhome-sync"
     }
   }
 }
