@@ -30,7 +30,7 @@ jobs:
             const { existsSync, readFileSync, writeFileSync } = require('node:fs');
             const { resolve } = require('node:path');
             const { inspect } = require('node:util');
-            const latest = "${{ env.LATEST_VERSION }}";
+            const semver = require('semver')
             const repository = {dot:{}};
 
             try{
@@ -48,25 +48,34 @@ jobs:
               core.setFailed(e);
             }
 
-            const current = repository.dot.semver.version;
+            const latest = semver.valid(semver.coerce('${{ env.LATEST_VERSION }}'));
+            const current = semver.valid(semver.coerce(repository.dot.semver.version));
+            const tag = semver.valid(semver.coerce('${{ env.LATEST_TAG }}'));
 
-            if(latest.match(/\d+\.\d+\.\d+/i) && latest !== `${repository.dot.semver.version}`){
-              core.info(`found newer version ${latest}`);
-              repository.dot.semver.version = latest.split('.').slice(0,3).join('.');
+            if(latest && latest !== current){
+              core.info(`new ${semver.diff(current, latest)} release found (${latest})!`)
+              repository.dot.semver.version = latest;
+              if(tag){
+                core.exportVariable('WORKFLOW_NEW_TAG', semver.inc(tag, semver.diff(current, latest)));
+              }
+
               if(repository.dot.semver?.latest){
                 repository.dot.semver.latest = repository.dot.semver.version;
               }
+
               if(repository.dot?.readme?.comparison?.image){
-                repository.dot.readme.comparison.image = repository.dot.readme.comparison.image.replace(current , repository.dot.semver.version);
+                repository.dot.readme.comparison.image = repository.dot.readme.comparison.image.replace(current, repository.dot.semver.version);
               }
+
               try{
                 writeFileSync(resolve('.json'), JSON.stringify(repository.dot, null, 2));
                 core.exportVariable('WORKFLOW_AUTO_UPDATE', true);
+
               }catch(e){
                 core.setFailed(e);
               }
             }else{
-              core.info(`latest version ${latest} is equal to current version ${repository.dot.semver.version}, no update needed!`);
+              core.info('no new release found');
             }
 
             core.info(inspect(repository.dot, {showHidden:false, depth:null, colors:true}));
@@ -81,6 +90,13 @@ jobs:
           git commit -m "[upgrade] ${{ env.LATEST_VERSION }}"
           git push origin HEAD:master
 
+      - name: cron-update / tag
+        if: env.WORKFLOW_AUTO_UPDATE == 'true' && steps.checkout.outcome == 'success'
+        run: |         
+          SHA256=$(git rev-list --branches --max-count=1)
+          git tag -a v${{ env.WORKFLOW_NEW_TAG }} -m "v${{ env.WORKFLOW_NEW_TAG }}" ${SHA256}
+          git push --follow-tags
+
       - name: cron-update / build docker image
         if: env.WORKFLOW_AUTO_UPDATE == 'true' && steps.checkout.outcome == 'success'
         uses: the-actions-org/workflow-dispatch@3133c5d135c7dbe4be4f9793872b6ef331b53bc7
@@ -88,4 +104,5 @@ jobs:
           workflow: docker.yml
           wait-for-completion: false
           token: "${{ secrets.REPOSITORY_TOKEN }}"
-          inputs: '{ "release":"false", "readme":"true" }'
+          inputs: '{ "release":"true", "readme":"true" }'
+          ref: "v${{ env.WORKFLOW_NEW_TAG }}"
