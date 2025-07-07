@@ -1,20 +1,20 @@
 ${{ image: API.png }}
 
-${{ content_synopsis }} If you want to run [11notes/adguard](https://github.com/11notes/docker-adguard) high-available you need something to synchronize the settings between the two or more instances. [adguardhome-sync](https://github.com/bakito/adguardhome-sync) solves this issue by copying all settings from a master to infinite slaves.
+${{ content_synopsis }} If you want to run [11notes/adguard](https://github.com/11notes/docker-adguard) high-available you need something to synchronize the settings between the two or more instances. [adguardhome-sync](https://github.com/bakito/adguardhome-sync) solves this issue by copying all settings from a master to infinite slaves. This image provides this functionality to you, [rootless](https://github.com/11notes/RTFM/blob/main/linux/container/image/rootless.md) and [distroless](https://github.com/11notes/RTFM/blob/main/linux/container/image/distroless.md).
 
-${{ content_uvp }} Good question! All the other images on the market that do exactly the same don’t do or offer these options:
+${{ content_uvp }} Good question! Because ...
 
 ${{ github:> [!IMPORTANT] }}
-${{ github:> }}* This image runs as 1000:1000 by default, most other images run everything as root
-${{ github:> }}* This image has no shell since it is distroless, most other images run on a distro like Debian or Alpine with full shell access (security)
-${{ github:> }}* This image does not ship with any critical or high rated CVE and is automatically maintained via CI/CD, most other images mostly have no CVE scanning or code quality tools in place
-${{ github:> }}* This image is created via a secure, pinned CI/CD process and immune to upstream attacks, most other images have upstream dependencies that can be exploited
-${{ github:> }}* This image contains a proper health check that verifies the app is actually working, most other images have either no health check or only check if a port is open or ping works
-${{ github:> }}* This repository has an auto update feature that will automatically build the latest version if released, most other providers don't do this
-${{ github:> }}* This image works as read-only, most other images need to write files to the image filesystem
-${{ github:> }}* This image is a lot smaller than most other images
+${{ github:> }}* ... this image runs [rootless](https://github.com/11notes/RTFM/blob/main/linux/container/image/rootless.md) as 1000:1000
+${{ github:> }}* ... this image has no shell since it is [distroless](https://github.com/11notes/RTFM/blob/main/linux/container/image/distroless.md)
+${{ github:> }}* ... this image is auto updated to the latest version via CI/CD
+${{ github:> }}* ... this image has a health check[^1]
+${{ github:> }}* ... this image runs read-only
+${{ github:> }}* ... this image is automatically scanned for CVEs before and after publishing
+${{ github:> }}* ... this image is created via a secure and pinned CI/CD process
+${{ github:> }}* ... this image is very small
 
-If you value security, simplicity and the ability to interact with the maintainer and developer of an image. Using my images is a great start in that direction.
+If you value security, simplicity and optimizations to the extreme, then this image might be for you.
 
 ${{ content_comparison }}
 
@@ -43,4 +43,7 @@ ${{ content_tips }}
 
 ${{ title_caution }}
 ${{ github:> [!CAUTION] }}
-${{ github:> }}* This image comes with a default configuration with a default password for the admin account. Please set your own password or provide your own configuration.
+${{ github:> }}* This image comes with a default configuration with a default password for the admin account. Please set your own password or provide your own configuration
+${{ github:> }}* The default health check of this image only works if you have metrics enabled (even if just on localhost)
+
+[^1]: There is a [PR](https://github.com/bakito/adguardhome-sync/pull/601) to include this custom health check into the upstream branch, till then there is custom code being used
