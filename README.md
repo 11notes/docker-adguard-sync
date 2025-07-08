@@ -193,11 +193,10 @@ docker pull quay.io/11notes/adguard-sync:0.7.6
 # CAUTION ⚠️
 > [!CAUTION]
 >* This image comes with a default configuration with a default password for the admin account. Please set your own password or provide your own configuration
->* The default health check of this image only works if you have metrics enabled (even if just on localhost)
 
 [^1]: There is a [PR](https://github.com/bakito/adguardhome-sync/pull/601) to include this custom health check into the upstream branch, till then there is custom code being used
 
 # ElevenNotes™️
 This image is provided to you at your own risk. Always make backups before updating an image to a different version. Check the [releases](https://github.com/11notes/docker-adguard-sync/releases) for breaking changes. If you have any problems with using this image simply raise an [issue](https://github.com/11notes/docker-adguard-sync/issues), thanks. If you have a question or inputs please create a new [discussion](https://github.com/11notes/docker-adguard-sync/discussions) instead of an issue. You can find all my other repositories on [github](https://github.com/11notes?tab=repositories).
 
-*created 07.07.2025, 15:47:21 (CET)*
+*created 08.07.2025, 14:37:00 (CET)*
