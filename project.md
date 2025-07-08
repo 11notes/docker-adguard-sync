@@ -44,6 +44,5 @@ ${{ content_tips }}
 ${{ title_caution }}
 ${{ github:> [!CAUTION] }}
 ${{ github:> }}* This image comes with a default configuration with a default password for the admin account. Please set your own password or provide your own configuration
-${{ github:> }}* The default health check of this image only works if you have metrics enabled (even if just on localhost)
 
 [^1]: There is a [PR](https://github.com/bakito/adguardhome-sync/pull/601) to include this custom health check into the upstream branch, till then there is custom code being used
