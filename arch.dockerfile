@@ -89,7 +89,7 @@
   VOLUME ["${APP_ROOT}/etc", "${APP_ROOT}/var"]
 
 # :: MONITORING
-  HEALTHCHECK --interval=5s --timeout=2s --start-period=5s \
+  HEALTHCHECK --interval=10s --timeout=5s --start-period=30s \
     CMD ["/usr/local/bin/curl", "-kILs", "--fail", "-o", "/dev/null", "http://localhost:3000/healthz"]
 
 # :: EXECUTE
