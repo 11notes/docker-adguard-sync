@@ -1,14 +1,14 @@
 # ╔═════════════════════════════════════════════════════╗
 # ║                       SETUP                         ║
 # ╚═════════════════════════════════════════════════════╝
-  # GLOBAL
+# GLOBAL
   ARG APP_UID=1000 \
       APP_GID=1000 \
+      BUILD_SRC=bakito/adguardhome-sync.git \
       BUILD_ROOT=/go/adguardhome-sync
   ARG BUILD_BIN=${BUILD_ROOT}/adguardhome-sync
 
-  # :: FOREIGN IMAGES
-  FROM 11notes/util:bin AS util-bin
+ # :: FOREIGN IMAGES
   FROM 11notes/distroless AS distroless
   FROM 11notes/distroless:curl AS distroless-curl
 
@@ -16,29 +16,18 @@
 # ║                       BUILD                         ║
 # ╚═════════════════════════════════════════════════════╝
 # :: ADGUARD-SYNC
-  FROM golang:1.24-alpine AS build
-  COPY --from=util-bin / /
+  FROM 11notes/go:1.24 AS build
   ARG APP_VERSION \
       APP_IMAGE \
+      BUILD_SRC \
       BUILD_ROOT \
-      BUILD_BIN \
-      TARGETARCH \
-      TARGETPLATFORM \
-      TARGETVARIANT \
-      CGO_ENABLED=0
+      BUILD_BIN
 
   RUN set -ex; \
-    apk --update --no-cache add \
-      git;
-
-  RUN set -ex; \
-    git clone https://github.com/bakito/adguardhome-sync.git -b v${APP_VERSION};
-
-  COPY ./build /
+    eleven git clone ${BUILD_SRC} v${APP_VERSION};
 
   RUN set -ex; \
     cd ${BUILD_ROOT}; \
-    go mod tidy; \
     go build -ldflags="-extldflags=-static -X github.com/bakito/adguardhome-sync/version.Version=${APP_VERSION} -X github.com/bakito/adguardhome-sync/version.Build=${APP_IMAGE}";
 
   RUN set -ex; \
@@ -47,7 +36,6 @@
 # :: FILE SYSTEM
   FROM alpine AS file-system
   ARG APP_ROOT
-  USER root
 
   RUN set -ex; \
     mkdir -p /distroless${APP_ROOT}/etc;
@@ -56,7 +44,7 @@
 # ╔═════════════════════════════════════════════════════╗
 # ║                       IMAGE                         ║
 # ╚═════════════════════════════════════════════════════╝
-  # :: HEADER
+# :: HEADER
   FROM scratch
 
   # :: default arguments
