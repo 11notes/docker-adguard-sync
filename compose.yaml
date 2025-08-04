@@ -8,12 +8,12 @@ services:
       adguard-slave:
         condition: "service_healthy"
         restart: true
-    image: "11notes/adguard-sync:0.7.7"
+    image: "11notes/adguard-sync:0.7.8"
     read_only: true
     environment:
       TZ: "Europe/Zurich"
     volumes:
-      - "etc:/adguard/etc"
+      - "adguard-sync.etc:/adguard-sync/etc"
     ports:
       - "3000:3000/tcp"
     networks:
@@ -45,7 +45,7 @@ services:
     restart: "always"
 
 volumes:
-  etc:
+ adguard-sync.etc:
 
 networks:
   frontend:
