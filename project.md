@@ -8,7 +8,7 @@ ${{ github:> [!IMPORTANT] }}
 ${{ github:> }}* ... this image runs [rootless](https://github.com/11notes/RTFM/blob/main/linux/container/image/rootless.md) as 1000:1000
 ${{ github:> }}* ... this image has no shell since it is [distroless](https://github.com/11notes/RTFM/blob/main/linux/container/image/distroless.md)
 ${{ github:> }}* ... this image is auto updated to the latest version via CI/CD
-${{ github:> }}* ... this image has a health check[^1]
+${{ github:> }}* ... this image has a health check
 ${{ github:> }}* ... this image runs read-only
 ${{ github:> }}* ... this image is automatically scanned for CVEs before and after publishing
 ${{ github:> }}* ... this image is created via a secure and pinned CI/CD process
@@ -44,5 +44,3 @@ ${{ content_tips }}
 ${{ title_caution }}
 ${{ github:> [!CAUTION] }}
 ${{ github:> }}* This image comes with a default configuration with a default password for the admin account. Please set your own password or provide your own configuration
-
-[^1]: There is a [PR](https://github.com/bakito/adguardhome-sync/pull/601) to include this custom health check into the upstream branch, till then there is custom code being used
