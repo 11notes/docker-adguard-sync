@@ -78,7 +78,7 @@
 
 # :: MONITORING
   HEALTHCHECK --interval=10s --timeout=5s --start-period=30s \
-    CMD ["/usr/local/bin/localhealth", "http://localhost:3000/healthz", "-I"]
+    CMD ["/usr/local/bin/localhealth", "http://127.0.0.1:3000/healthz", "-I"]
 
 # :: EXECUTE
   USER ${APP_UID}:${APP_GID}
