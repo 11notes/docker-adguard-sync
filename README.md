@@ -34,7 +34,7 @@ Below you find a comparison between this image and the most used or original one
 
 | **image** | 11notes/adguard-sync:0.7.8 | linuxserver/adguardhome-sync |
 | ---: | :---: | :---: |
-| **image size on disk** | 7.67MB | 46.2MB |
+| **image size on disk** | 7.65MB | 46.2MB |
 | **process UID/GID** | 1000/1000 | 0/0 |
 | **distroless?** | ✅ | ❌ |
 | **rootless?** | ✅ | ❌ |
@@ -197,4 +197,4 @@ docker pull quay.io/11notes/adguard-sync:0.7.8
 # ElevenNotes™️
 This image is provided to you at your own risk. Always make backups before updating an image to a different version. Check the [releases](https://github.com/11notes/docker-adguard-sync/releases) for breaking changes. If you have any problems with using this image simply raise an [issue](https://github.com/11notes/docker-adguard-sync/issues), thanks. If you have a question or inputs please create a new [discussion](https://github.com/11notes/docker-adguard-sync/discussions) instead of an issue. You can find all my other repositories on [github](https://github.com/11notes?tab=repositories).
 
-*created 05.08.2025, 00:54:22 (CET)*
+*created 06.08.2025, 00:49:44 (CET)*
