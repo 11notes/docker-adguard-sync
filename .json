@@ -3,7 +3,7 @@
   "name": "adguard-sync",
   "root": "/adguard-sync",
   "semver": {
-    "version": "0.7.9"
+    "version": "0.8.1"
   },
   "readme": {
     "description": "Run adguard-sync rootless and distroless.",
