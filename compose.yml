@@ -10,6 +10,8 @@ services:
         restart: true
     image: "11notes/adguard-sync:0.7.8"
     read_only: true
+    security_opt:
+      no-new-privileges: true
     environment:
       TZ: "Europe/Zurich"
     volumes:
