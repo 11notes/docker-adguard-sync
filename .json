@@ -6,7 +6,7 @@
     "version": "0.7.8"
   },
   "readme": {
-    "description": "Run adguard-sync rootless and distroless.",
+    "description": "run adguard-sync rootless and distroless.",
     "introduction": "Synchronize AdGuard Home config to replicas",
     "built": {
       "adguardhome-sync": "https://github.com/bakito/adguardhome-sync"
