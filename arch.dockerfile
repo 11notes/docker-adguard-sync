@@ -4,7 +4,10 @@
 # GLOBAL
   ARG APP_UID=1000 \
       APP_GID=1000 \
-      BUILD_SRC=bakito/adguardhome-sync.git \
+      APP_GO_VERSION=0
+
+# APP
+  ARG BUILD_SRC=bakito/adguardhome-sync.git \
       BUILD_ROOT=/go/adguardhome-sync
   ARG BUILD_BIN=${BUILD_ROOT}/adguardhome-sync
 
@@ -16,7 +19,7 @@
 # ║                       BUILD                         ║
 # ╚═════════════════════════════════════════════════════╝
 # :: ADGUARD-SYNC
-  FROM 11notes/go:1.24 AS build
+  FROM 11notes/go:${APP_GO_VERSION} AS build
   ARG APP_VERSION \
       APP_IMAGE \
       BUILD_SRC \
